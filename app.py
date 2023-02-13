@@ -11,6 +11,7 @@ import pandas as pd
 uploaded_file = st.file_uploader("Choose a file")
 
 pulse_value = st.sidebar.selectbox("Select pulse", [0,1,2,3,4,5], index=0)
+pulse_value_2 = st.sidebar.selectbox("Select pulse 2",[0,1,2,3,4,5],index = 0)
 
 
 if uploaded_file is not None:
