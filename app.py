@@ -23,13 +23,14 @@ if uploaded_file is not None:
   df = df[["Name", "Phone Number", "Speaker",'Pulse']]
   df['Speaker'] = df['Speaker'].replace(['Yes','No'], [1,0])
   print(uploaded_file)
+  df = df[["Name", "Phone Number", "Speaker"]]
   @st.experimental_memo
   
   #df = pd.read_csv("dir/file.csv")
   
   
   def download_file():
-    df = df[["Name", "Phone Number", "Speaker"]]
+    
 
     df.to_excel(f'{file_name}_transformed.xlsx', index=False)
     st.success('File downloaded!')
