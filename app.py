@@ -23,7 +23,7 @@ if uploaded_file is not None:
   df = df[["Name", "Phone Number", "Speaker",'Pulse']]
   df['Speaker'] = df['Speaker'].replace(['Yes','No'], [1,0])
   print(df)
-  df = df[["Name", "Phone Number", "Speaker"]]
+  df = df[["Name", "Phone Number", "Speaker"]].reset_index(drop = True)
   @st.experimental_memo
   
   #df = pd.read_csv("dir/file.csv")
