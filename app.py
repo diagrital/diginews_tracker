@@ -31,7 +31,7 @@ if uploaded_file is not None:
   #df = pd.read_csv("dir/file.csv")
   
   @st.experimental_memo
-  st.write(df)
+  #st.write(df)
   def convert_df(df):
       return df.to_excel(index=False)
   csv = convert_df(df)
