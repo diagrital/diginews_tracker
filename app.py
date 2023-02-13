@@ -24,10 +24,19 @@ if uploaded_file is not None:
   df['Speaker'] = df['Speaker'].replace(['Yes','No'], [1,0])
   #df = pd.read_csv("dir/file.csv")
   @st.experimental_memo
+  
+  def download_file():
+    df.to_excel('file.xlsx', index=False)
+    st.success('File downloaded!')
+
+  if st.button('Download'):
+    download_file()
+
+  st.write(df)
   #def convert_df(df):
       #return df.to_excel(index=False)
   #excel = convert_df(df)
-  st.download_button("Press to Download",df.to_excel('file.xlsx',index=False),"file.xlsx","text/csv",
-  key='download-file')
+  #st.download_button("Press to Download",df.to_excel('file.xlsx',index=False),"file.xlsx","text/csv",
+  #key='download-file')
   #print(df.head())
   #st.write(df.head())
