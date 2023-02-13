@@ -9,7 +9,7 @@ import pandas as pd
 #st.title("Hello world!")
 
 uploaded_file = st.file_uploader("Choose a file")
-print(uploaded_file)
+
 
 
 
@@ -20,12 +20,14 @@ if uploaded_file is not None:
   pulse_value = st.sidebar.selectbox("Select pulse", [0,1,2,3,4,5], index=0)
   pulse_value_2 = st.sidebar.selectbox("Select pulse 2",[0,1,2,3,4,5],index = 0)
   df = df[(df['Pulse'] == pulse_value) | (df['Pulse'] == pulse_value_2)]
-  
   df = df[["Name", "Phone Number", "Speaker",'Pulse']]
   df['Speaker'] = df['Speaker'].replace(['Yes','No'], [1,0])
-  #df = pd.read_csv("dir/file.csv")
+  print(uploaded_file)
   @st.experimental_memo
   df = df[["Name", "Phone Number", "Speaker"]]
+  #df = pd.read_csv("dir/file.csv")
+  
+  
   def download_file():
     df.to_excel(f'{file_name}_transformed.xlsx', index=False)
     st.success('File downloaded!')
