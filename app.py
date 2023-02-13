@@ -24,7 +24,7 @@ if uploaded_file is not None:
   #df = pd.read_csv("dir/file.csv")
   @st.experimental_memo
   def convert_df(df):
-      return df.to_excel(index=False).encode('utf-8')
+      return df.to_excel(index=False)
   excel = convert_df(df)
   st.download_button("Press to Download",excel,"file.csv","text/csv",
   key='download-file')
