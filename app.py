@@ -33,9 +33,9 @@ if uploaded_file is not None:
   @st.experimental_memo
   #st.write(df)
   def convert_df(df):
-      return df.to_excel(index=False)
+      return df.to_csv(index=False).encode('utf-8')
   csv = convert_df(df)
-  st.download_button("Press to Download",df.to_excel('file.xlsx',index=False),"file.csv","text/csv",
-  key='download-file')
+  st.download_button("Press to Download",csv,"file.csv","text/csv",
+  key='download-csv')
   #print(df.head())
   #st.write(df.head())
