@@ -30,21 +30,12 @@ if uploaded_file is not None:
   
   #df = pd.read_csv("dir/file.csv")
   
-  
-  def download_file():
-    download_folder = os.path.join(os.path.expanduser('~'), 'Downloads')
-    file_path = os.path.join(download_folder, f'{file_name}_transformed.xlsx')
-    df.to_excel(file_path, index=False)
-    st.success(f'File downloaded to {file_path}')
-
-  if st.button('Download'):
-    download_file()
-
+  @st.experimental_memo
   st.write(df)
-  #def convert_df(df):
-      #return df.to_excel(index=False)
-  #excel = convert_df(df)
-  #st.download_button("Press to Download",df.to_excel('file.xlsx',index=False),"file.xlsx","text/csv",
-  #key='download-file')
+  def convert_df(df):
+      return df.to_excel(index=False)
+  csv = convert_df(df)
+  st.download_button("Press to Download",df.to_excel('file.xlsx',index=False),"file.csv","text/csv",
+  key='download-file')
   #print(df.head())
   #st.write(df.head())
