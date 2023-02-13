@@ -14,7 +14,8 @@ print(uploaded_file)
 
 
 if uploaded_file is not None:
-  df = pd.read_excel(uploaded_file)
+  file_name = uploaded_file.name
+  
   #cols = st.sidebar.selectbox("Number of columns you want in your data", list(range(len(df.columns))), index=0)
   pulse_value = st.sidebar.selectbox("Select pulse", [0,1,2,3,4,5], index=0)
   pulse_value_2 = st.sidebar.selectbox("Select pulse 2",[0,1,2,3,4,5],index = 0)
@@ -26,7 +27,7 @@ if uploaded_file is not None:
   @st.experimental_memo
   
   def download_file():
-    df.to_excel('file.xlsx', index=False)
+    df.to_excel(f'{file_name}_transformed.xlsx', index=False)
     st.success('File downloaded!')
 
   if st.button('Download'):
