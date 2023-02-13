@@ -6,6 +6,7 @@ Created on Thu Feb  9 10:24:28 2023
 """
 import streamlit as st
 import pandas as pd
+import os
 #st.title("Hello world!")
 
 uploaded_file = st.file_uploader("Choose a file")
@@ -22,7 +23,7 @@ if uploaded_file is not None:
   df = df[(df['Pulse'] == pulse_value) | (df['Pulse'] == pulse_value_2)]
   df = df[["Name", "Phone Number", "Speaker",'Pulse']]
   df['Speaker'] = df['Speaker'].replace(['Yes','No'], [1,0])
-  st.table(df[["Name", "Phone Number", "Speaker",'Pulse']])
+  #st.table(df[["Name", "Phone Number", "Speaker",'Pulse']])
   
   df = df[["Name", "Phone Number", "Speaker"]].reset_index(drop = True)
   @st.experimental_memo
@@ -31,10 +32,10 @@ if uploaded_file is not None:
   
   
   def download_file():
-    
-
-    df.to_excel(f'{file_name}_transformed.xlsx', index=False)
-    st.success('File downloaded!')
+    download_folder = os.path.join(os.path.expanduser('~'), 'Downloads')
+    file_path = os.path.join(download_folder, f'{file_name}_transformed.xlsx')
+    df.to_excel(file_path, index=False)
+    st.success(f'File downloaded to {file_path}')
 
   if st.button('Download'):
     download_file()
