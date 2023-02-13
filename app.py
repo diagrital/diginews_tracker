@@ -22,7 +22,8 @@ if uploaded_file is not None:
   df = df[(df['Pulse'] == pulse_value) | (df['Pulse'] == pulse_value_2)]
   df = df[["Name", "Phone Number", "Speaker",'Pulse']]
   df['Speaker'] = df['Speaker'].replace(['Yes','No'], [1,0])
-  print(df)
+  st.table(df[["Name", "Phone Number", "Speaker",'Pulse']])
+  
   df = df[["Name", "Phone Number", "Speaker"]].reset_index(drop = True)
   @st.experimental_memo
   
