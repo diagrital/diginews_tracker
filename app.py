@@ -35,7 +35,7 @@ if uploaded_file is not None:
   def convert_df(df):
       return df.to_csv(index=False).encode('utf-8')
   csv = convert_df(df)
-  st.download_button("Press to Download",csv,"file.csv","text/csv",
+  st.download_button("Press to Download",csv,f"{file_name}_transformed.csv","text/csv",
   key='download-csv')
   #print(df.head())
   #st.write(df.head())
